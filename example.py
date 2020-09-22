@@ -1,4 +1,4 @@
-from pyerror import Measurement
+from scierror import Measurement
 
 weight1 = Measurement(15, 0.1)
 weight2 = Measurement(20, 0.5)
