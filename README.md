@@ -7,5 +7,5 @@ Measurement error propagation with Python.
 <ul>
     <li>Add in operations with constants</li>
     <li>Implement more builtin operations</li>
-    <li>Look into implementing more complicated functions such as trig functions</li>
+    <li>Implement inverse trig functions and logs of different bases</li>
 </ul>
