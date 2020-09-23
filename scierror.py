@@ -88,10 +88,38 @@ class Measurement:
         return Measurement(new_value, new_error)
 
     @staticmethod
+    def logbase(measurement,b):
+        """Defines taking log base b."""
+        new_value = math.log(measurement.get_value(),b)
+        new_error = measurement.get_error()/ ( math.log(b,math.e) * measurement.get_value() )
+        return Measurement(new_value, new_error)
+
+    @staticmethod
     def exp(measurement):
         """Defines e^measurement."""
         new_value = math.exp(measurement.get_value())
         new_error = new_value * measurement.get_error()
+        return Measurement(new_value, new_error)
+
+    @staticmethod
+    def arcsin(measurement):
+        """Defines the application of the arcsine function."""
+        new_value = math.asin(measurement.get_value())
+        new_error = measurement.get_error() / math.sqrt(1-measurement.get_value() ** 2)
+        return Measurement(new_value, new_error)
+
+    @staticmethod
+    def arccos(measurement):
+        """Defines the application of the arccos function.""" # could also just call arcsin(measurement)
+        new_value = math.acos(measurement.get_value())
+        new_error = measurement.get_error() / math.sqrt(1-measurement.get_value() ** 2)
+        return Measurement(new_value, new_error)
+
+    @staticmethod
+    def arctan(measurement):
+        """Defines the application of the arcsine function."""
+        new_value = math.atan(measurement.get_value())
+        new_error = measurement.get_error() / (measurement.get_value() ** 2 + 1)
         return Measurement(new_value, new_error)
 
     def __str__(self):
