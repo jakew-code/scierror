@@ -1,15 +1,6 @@
 # SciError
-Measurement error propagation with Python. 
+Laboratory report tools in Python.
 
 <i>Lab reports just got a whole lot easier.</i>
 
-<h3>Notes</h3>
-
-Constants can be used in formulas by creating a measurement with zero error.
-
-<h3>TODO</h3>
-<ul>
-    <li>Implement more builtin operations</li>
-    <li>Include significant figures in measurements</li>
-    <li>Maybe design a system to store and read experimental data from csv files, processing unwanted headings etc.</li>
-</ul>
+A package for automatic measurement error propagation and linear regressions. Stores measurements and their corresponding uncertainties in a Measurement class which can be propagated using the defined methods. CSV files can be read using the DataFile class and sets of data can be linearly regressed using the LinearRegression class. The latex table function is also useful for quickly transferring data into a preformatted latex table which can be copied into a report.
