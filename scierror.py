@@ -229,3 +229,41 @@ class Measurement:
     def __repr__(self):
         """Returns the string representation of the measurement."""
         return "{} +- {}".format(round(self._value, 4), round(self._error, 4))
+
+
+class DataFile:
+    """Represents a csv file containing data."""
+    def __init__(self, filename):
+        """Reads the given csv file into a list of rows containing
+        the data.
+        """
+        self._data = []
+
+        # Turn each line of the file into a list and store it.
+        with open(filename) as file:
+            for line in file:
+                line = line.strip().split(',')
+                self._data.append(line)
+
+    def read_cols(self, start_row, start_col, end_row, end_col):
+        """Takes the designated subsection of the data and returns
+        each of the columns as a list with each element converted
+        to a float.
+        
+        Subsection starts at (0,0) and is not inclusive of end 
+        row/col.
+        """
+        if start_row > end_row or start_col > end_col:
+            raise IndexError("End row/col coordinate before start coordinate")
+        
+        arrays = []
+
+        for column in range(start_col, end_col):
+            new_array = []
+
+            for row in range(start_row, end_row):
+                new_array.append(float(self._data[row][column]))
+            
+            arrays.append(new_array)
+        
+        return arrays
