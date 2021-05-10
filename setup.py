@@ -4,7 +4,7 @@ import pathlib
 DIR = pathlib.Path(__file__).parent
 README = (DIR / 'README.md').read_text()
 
-VERSION = '0.0.2'
+VERSION = '0.0.3'
 DESCRIPTION = 'Laboratory report tools in Python.'
 
 setup(
