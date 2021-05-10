@@ -2,10 +2,50 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 
+def latex_table(arrays, here=False):
+    """Prints the code for a latex table with empty headings,
+    inserting the data provided into rows.
+    
+    Args:
+        arrays: The list of arrays for the table.
+        here: True if here tag is to be included.
+    """
+    cols = len(arrays[0]) + 1
+
+    table_string = (
+        "\\begin{table}" + int(here)*"[h]" + "\n" +
+        "\t\centering\n" + 
+        "\t\\begin{tabular}{" + cols*'c' + "}\n" +
+        "\t\t\hline\n" + 
+        "\t\t" + (cols - 1)*" &" + " \\\\\n" + 
+        "\t\t\hline\n"
+    )
+
+    # Generate each row and add to string.
+    for array in arrays:
+        new_row = "\t\t"
+
+        for element in array:
+            new_row += " & " + str(element)
+
+        new_row += " \\\\\n"
+        table_string += new_row
+
+    table_string += (
+        "\t\t\hline\n" + 
+        "\t\end{tabular}\n" + 
+        "\t\caption{}\n" + 
+        "\end{table}"
+    )
+
+    print(table_string)
+
+
 class DimensionError(Exception):
     """An error represeting a mismatch of array dimensions."""
     def __init__(self, error_message):
         super().__init__(error_message)
+
 
 class LinearRegression:
     """A class to perform and plot linear regressions of data with error in 
