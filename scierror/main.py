@@ -125,9 +125,8 @@ class LinearRegression:
         plt.ylim(ylim)
 
         # Generate and plot calculated fit.
-        X = np.linspace(self._xdata[0], self._xdata[-1], 100)
-        Y = self._m.get_value()*X + self._c.get_value()
-        plt.plot(X, Y)
+        Y = self._m.get_value()*self._xdata + self._c.get_value()
+        plt.plot(self._xdata, Y)
 
         if show:
             plt.show()
