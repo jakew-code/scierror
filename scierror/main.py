@@ -148,8 +148,12 @@ class Measurement:
         return self._value
 
     def get_error(self):
-        """Returns the error of the measurement."""
+        """Returns the absolute error of the measurement."""
         return self._error
+    
+    def get_relative(self):
+        """Returns the relative error of the measurement."""
+        return self._error/self._value
 
     def set_value(self, value):
         """Sets the value of the measurement."""
