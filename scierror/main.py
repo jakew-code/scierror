@@ -10,20 +10,23 @@ def latex_table(arrays, here=False):
         arrays: The list of arrays for the table.
         here: True if here tag is to be included.
     """
+    # Define a 4-space tab (latex uses 4 space tabs).
+    TAB = "    "
+    
     cols = len(arrays[0]) + 1
 
     table_string = (
         "\\begin{table}" + int(here)*"[h]" + "\n" +
-        "\t\centering\n" + 
-        "\t\\begin{tabular}{" + cols*'c' + "}\n" +
-        "\t\t\hline\n" + 
-        "\t\t" + (cols - 1)*" &" + " \\\\\n" + 
-        "\t\t\hline\n"
+        TAB + "\centering\n" + 
+        TAB + "\\begin{tabular}{" + cols*'c' + "}\n" +
+        2*TAB + "\hline\n" + 
+        2*TAB + "" + (cols - 1)*" &" + " \\\\\n" + 
+        2*TAB + "\hline\n"
     )
 
     # Generate each row and add to string.
     for array in arrays:
-        new_row = "\t\t"
+        new_row = 2*TAB
 
         for element in array:
             new_row += " & " + str(element)
@@ -32,9 +35,10 @@ def latex_table(arrays, here=False):
         table_string += new_row
 
     table_string += (
-        "\t\t\hline\n" + 
-        "\t\end{tabular}\n" + 
-        "\t\caption{}\n" + 
+        2*TAB + "\hline\n" + 
+        TAB + "\end{tabular}\n" + 
+        TAB + "\caption{}\n" + 
+        TAB + "\label{tab:}\n" +
         "\end{table}"
     )
 
